@@ -27,7 +27,7 @@ def has_won(puzzle):
     is_correct(puzzle)
 
 
-def get_random_puzzle():
+def get_random_solvable_puzzle():
     puzzle = randomize_puzzle()
     return puzzle
 

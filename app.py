@@ -1,5 +1,5 @@
 from console_ui import clear_ui, init_ui, display_output, handle_keypress
-from controler import get_random_puzzle, get_ordered_puzzle
+from controler import get_random_solvable_puzzle, get_ordered_puzzle
 
 import curses
 
@@ -11,7 +11,7 @@ def main():
         ui = init_ui()
 
         # Récupération d'un taquin tiré aléatoirement
-        puzzle = get_random_puzzle()
+        puzzle = get_random_solvable_puzzle()
 
         while True:
             # Attend une action et affiche le résultat

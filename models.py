@@ -8,12 +8,30 @@ def is_correct(puzzle):
 
 
 def randomize_puzzle():
-    # TODO : certains états random ne sont pas solvables,
-    # il faut que cette fonction ne renvoie que des états solvables
-    # TODO : changer en def randomize_puzzle(puzzle)
-    cases = list(range(1, PUZZLE_SIZE ** 2)) + [EMPTY_CELL_VALUE]
-    shuffle(cases)
-    return [list(a) for a in zip(*[iter(cases)] * PUZZLE_SIZE)]
+     while "unsolvable puzzle":
+        puzzle = create_list()
+        if is_solvable_and_empty_at_end(puzzle):
+            return [list(a) for a in zip(*[iter(puzzle)] * PUZZLE_SIZE)]
+
+
+def create_list():
+    puzzle_list = list(range(1, PUZZLE_SIZE ** 2))
+    shuffle(puzzle_list)
+    puzzle_list.append(EMPTY_CELL_VALUE)
+    return puzzle_list
+
+
+def is_solvable_and_empty_at_end(puzzle_list):
+    inversion = 0
+    i = 0
+    while i < len(puzzle_list) - 2:
+        j = i+1
+        while j < len(puzzle_list) - 1:
+            if puzzle_list[i] > puzzle_list[j]:
+                inversion += 1
+            j += 1
+        i += 1
+    return (inversion % 2 == 0) and (puzzle_list[-1] == EMPTY_CELL_VALUE)
 
 
 def move(direction, puzzle):
@@ -43,3 +61,8 @@ def get_empty_cell_location(puzzle):
         for y, cell in enumerate(list):
             if cell == EMPTY_CELL_VALUE:
                 return x, y
+
+
+if __name__ == '__main__':
+    puzzle = create_list()
+    print(is_solvable_and_empty_at_end(puzzle))
