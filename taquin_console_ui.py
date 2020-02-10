@@ -1,5 +1,5 @@
-import settings as set
-from controler import make_move, has_won
+import taquin_settings as set
+from taquin_controler import make_move, has_won
 
 import curses
 from terminaltables import AsciiTable

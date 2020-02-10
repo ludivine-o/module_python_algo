@@ -1,6 +1,8 @@
 import pytest
+from blog_controller import *
+from blog_model import *
 
-from controller import Controller
+
 
 def test_should_select_model():
     assert_create_controller_with_model(ModelInMemory(articles=[]), "Controller ( model : inmemory )")
@@ -42,7 +44,7 @@ def test_should_list_two_article(model_with_two_articles):
     assert articles[1].get_text() == "text 2"
 
 
-def test_should_update_article(model_with_two_articles):
+def test_should_update_one_article(model_with_two_articles):
     controller = Controller(model_with_two_articles)
     controller.update_article(title="title 1", new_text="new text 1")
     articles = controller.get_all_articles()
@@ -52,6 +54,19 @@ def test_should_update_article(model_with_two_articles):
 
     assert articles[1].get_title() == "title 2"
     assert articles[1].get_text() == "text 2"
+
+def test_should_update_another_article(model_with_two_articles):
+    controller = Controller(model_with_two_articles)
+    controller.update_article(title="title 2", new_text="new text 2")
+
+    articles = controller.get_all_articles()
+    assert len(articles) == 2
+    assert articles[0].get_title() == "title 1"
+    assert articles[0].get_text() == "text 1"
+
+    assert articles[1].get_title() == "title 2"
+    assert articles[1].get_text() == "new text 2"
+
 
 
 def test_should_create_article(model_with_two_articles):
@@ -88,9 +103,6 @@ def assert_raise_error_when_article_already_exists(controller, expected_error, n
         assert e.message == expected_error
 
 
-class NonExistantArticleException(Exception):
-    def __init__(self, message):
-        self.message = message
 
 
 def test_should_raise_error_when_updating_nonexistant_article(model_with_two_articles):

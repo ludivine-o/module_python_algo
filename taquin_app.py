@@ -1,5 +1,5 @@
 from console_ui import clear_ui, init_ui, display_output, handle_keypress
-from controler import get_random_solvable_puzzle, get_ordered_puzzle
+from taquin_controler import get_random_solvable_puzzle, get_ordered_puzzle
 
 import curses
 

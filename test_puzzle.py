@@ -1,5 +1,5 @@
-from controler import get_random_solvable_puzzle, make_move
-from models import is_solvable_and_empty_at_end
+from taquin_controler import get_random_solvable_puzzle, make_move
+from taquin_models import is_solvable_and_empty_at_end
 
 
 def test_move_up():

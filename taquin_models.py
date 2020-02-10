@@ -1,4 +1,4 @@
-from settings import PUZZLE_SIZE, EMPTY_CELL_VALUE
+from taquin_settings import PUZZLE_SIZE, EMPTY_CELL_VALUE
 from random import shuffle
 
 

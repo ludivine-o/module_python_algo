@@ -1,5 +1,5 @@
-from models import move, is_correct, randomize_puzzle, ordered_puzzle, get_empty_cell_location
-from settings import PUZZLE_SIZE
+from taquin_models import move, is_correct, randomize_puzzle, ordered_puzzle, get_empty_cell_location
+from taquin_settings import PUZZLE_SIZE
 
 
 def get_available_movement(puzzle):

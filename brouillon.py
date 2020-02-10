@@ -1,7 +1,7 @@
-import controler
-import models
+import taquin_controler
+import taquin_models
 
-puzzle = models.ordered_puzzle()
+puzzle = taquin_models.ordered_puzzle()
 
 previous_move = "down"
 
