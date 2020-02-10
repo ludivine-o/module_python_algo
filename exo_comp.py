@@ -1,27 +1,47 @@
-ch_let = ord(input("choisir une lettre : "))
-print(ch_let)
-lettre = ord('a')
-ligne_début = ((ch_let-97)*'.' + str(chr(lettre)) + (ch_let-97)*'.')
+import struct
 
-# 1ere ligne
-print(ligne_début)
-pc = ch_let-1-97
-pm = 1
-lettre += 1
+# on enregistre un entier, un réel et 4 caractères
+integer = 10
+string = "Python is fun !"
+
+# ouverture, lecture et ecriture se fait de la meme maniere que pour un fichier texte.
+# Il suffit de rajouter un b apres le choix du type : wb, rb,
 
 
-# lignes descendantes
-while lettre != ch_let:
-    print(pc*"." + str(chr(lettre)) + pm*"." + str(chr(lettre)) + pc*".")
-    pc -= 1
-    pm += 2
-    lettre += 1
-# lignes montantes
-while lettre != ord("a"):
-    print(pc*"." + str(chr(lettre)) + pm*"." + str(chr(lettre)) + pc*".")
-    pc += 1
-    pm -= 2
-    lettre -= 1
+# écriture
+def
+    with open("test.bin", "wb") as file:
+    # le module struct.pack permet d'ecrire
+    # (write(struct.pack( type de donnée, donnée)
+        file.write(struct.pack("i", integer))
+        octets = string.encode("ascii")
+        file.write(struct.pack("4s", octets))
 
-# derniere ligne
-print(ligne_début)
+# lecture
+with open("info.bin", "rb") as file:
+    i = struct.unpack("i", file.read(4))
+    x = struct.unpack("d", file.read(8))
+    s = struct.unpack("4s", file.read(4))
+
+def write_bin(file_name, text):
+    with open(file_name, "wb") as bin_file:
+        bin_file.write(b"COUCOU ")
+        bin_file.write(bytes(str(text), encoding='utf8'))
+
+
+# affichage pour vérifier que les données ont été bien lues
+print(i)
+print(x)
+print(s)
+
+
+
+
+# with open('fichier.bin', 'rb') as f:
+#     donnees = f.read(16)
+#     texte = donnees.decode('utf-8')
+#
+# with open('fichier.bin', 'wb') as f:
+#     texte = 'Python est amusant'
+#     f.write(texte.encode('utf-8'))
+#
